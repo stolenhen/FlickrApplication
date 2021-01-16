@@ -11,6 +11,18 @@
 		7B61517925B336E3008EE885 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61517825B336E3008EE885 /* ContentView.swift */; };
 		7B61517B25B336E6008EE885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B61517A25B336E6008EE885 /* Assets.xcassets */; };
 		7B61517E25B336E6008EE885 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B61517D25B336E6008EE885 /* Preview Assets.xcassets */; };
+		7B61518825B33710008EE885 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B61518725B33710008EE885 /* README.md */; };
+		7B61518B25B33715008EE885 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7B61518A25B33715008EE885 /* .gitignore */; };
+		7B61519625B33786008EE885 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61519525B33786008EE885 /* PhotoResponse.swift */; };
+		7B61519925B337CF008EE885 /* PopularPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61519825B337CF008EE885 /* PopularPhotosView.swift */; };
+		7B61519D25B337E5008EE885 /* PopularPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61519C25B337E5008EE885 /* PopularPhotosViewModel.swift */; };
+		7B6151A025B33803008EE885 /* DetailPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61519F25B33803008EE885 /* DetailPhotoView.swift */; };
+		7B6151A325B33821008EE885 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6151A225B33821008EE885 /* WebImageView.swift */; };
+		7B6151A625B33830008EE885 /* WebImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6151A525B33830008EE885 /* WebImageViewModel.swift */; };
+		7B6151A925B3385A008EE885 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6151A825B3385A008EE885 /* NetworkService.swift */; };
+		7B6151AC25B33865008EE885 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6151AB25B33865008EE885 /* ImageLoader.swift */; };
+		7B6151AF25B3389D008EE885 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6151AE25B3389D008EE885 /* Constants.swift */; };
+		7B6151B525B339C1008EE885 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B6151B725B339C1008EE885 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +32,19 @@
 		7B61517A25B336E6008EE885 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B61517D25B336E6008EE885 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7B61517F25B336E6008EE885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B61518725B33710008EE885 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7B61518A25B33715008EE885 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7B61519525B33786008EE885 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
+		7B61519825B337CF008EE885 /* PopularPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularPhotosView.swift; sourceTree = "<group>"; };
+		7B61519C25B337E5008EE885 /* PopularPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularPhotosViewModel.swift; sourceTree = "<group>"; };
+		7B61519F25B33803008EE885 /* DetailPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoView.swift; sourceTree = "<group>"; };
+		7B6151A225B33821008EE885 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		7B6151A525B33830008EE885 /* WebImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageViewModel.swift; sourceTree = "<group>"; };
+		7B6151A825B3385A008EE885 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		7B6151AB25B33865008EE885 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		7B6151AE25B3389D008EE885 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7B6151B625B339C1008EE885 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7B6151C025B339EF008EE885 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +61,8 @@
 		7B61516A25B336E3008EE885 = {
 			isa = PBXGroup;
 			children = (
+				7B61518725B33710008EE885 /* README.md */,
+				7B61518A25B33715008EE885 /* .gitignore */,
 				7B61517525B336E3008EE885 /* FlickrApplication */,
 				7B61517425B336E3008EE885 /* Products */,
 			);
@@ -52,8 +79,15 @@
 		7B61517525B336E3008EE885 /* FlickrApplication */ = {
 			isa = PBXGroup;
 			children = (
+				7B61518E25B33729008EE885 /* Navigation */,
+				7B61518D25B33721008EE885 /* Model */,
+				7B61518F25B33731008EE885 /* PopularPhotosModule */,
+				7B61519025B33743008EE885 /* DetailPhotoModule */,
+				7B61519125B33753008EE885 /* WebImage */,
+				7B61519225B3375D008EE885 /* Services */,
+				7B61519425B33769008EE885 /* Localization */,
+				7B61519325B33762008EE885 /* Utils */,
 				7B61517625B336E3008EE885 /* FlickrApplicationApp.swift */,
-				7B61517825B336E3008EE885 /* ContentView.swift */,
 				7B61517A25B336E6008EE885 /* Assets.xcassets */,
 				7B61517F25B336E6008EE885 /* Info.plist */,
 				7B61517C25B336E6008EE885 /* Preview Content */,
@@ -67,6 +101,73 @@
 				7B61517D25B336E6008EE885 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7B61518D25B33721008EE885 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B61519525B33786008EE885 /* PhotoResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B61518E25B33729008EE885 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				7B61517825B336E3008EE885 /* ContentView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		7B61518F25B33731008EE885 /* PopularPhotosModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B61519825B337CF008EE885 /* PopularPhotosView.swift */,
+				7B61519C25B337E5008EE885 /* PopularPhotosViewModel.swift */,
+			);
+			path = PopularPhotosModule;
+			sourceTree = "<group>";
+		};
+		7B61519025B33743008EE885 /* DetailPhotoModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B61519F25B33803008EE885 /* DetailPhotoView.swift */,
+			);
+			path = DetailPhotoModule;
+			sourceTree = "<group>";
+		};
+		7B61519125B33753008EE885 /* WebImage */ = {
+			isa = PBXGroup;
+			children = (
+				7B6151A225B33821008EE885 /* WebImageView.swift */,
+				7B6151A525B33830008EE885 /* WebImageViewModel.swift */,
+			);
+			path = WebImage;
+			sourceTree = "<group>";
+		};
+		7B61519225B3375D008EE885 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7B6151A825B3385A008EE885 /* NetworkService.swift */,
+				7B6151AB25B33865008EE885 /* ImageLoader.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7B61519325B33762008EE885 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7B6151AE25B3389D008EE885 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7B61519425B33769008EE885 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				7B6151B725B339C1008EE885 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +211,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 7B61516A25B336E3008EE885;
 			productRefGroup = 7B61517425B336E3008EE885 /* Products */;
@@ -126,6 +228,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B6151B525B339C1008EE885 /* Localizable.strings in Resources */,
+				7B61518B25B33715008EE885 /* .gitignore in Resources */,
+				7B61518825B33710008EE885 /* README.md in Resources */,
 				7B61517E25B336E6008EE885 /* Preview Assets.xcassets in Resources */,
 				7B61517B25B336E6008EE885 /* Assets.xcassets in Resources */,
 			);
@@ -138,12 +243,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B61519625B33786008EE885 /* PhotoResponse.swift in Sources */,
+				7B6151AF25B3389D008EE885 /* Constants.swift in Sources */,
+				7B61519925B337CF008EE885 /* PopularPhotosView.swift in Sources */,
+				7B6151AC25B33865008EE885 /* ImageLoader.swift in Sources */,
+				7B6151A025B33803008EE885 /* DetailPhotoView.swift in Sources */,
+				7B6151A325B33821008EE885 /* WebImageView.swift in Sources */,
+				7B6151A925B3385A008EE885 /* NetworkService.swift in Sources */,
+				7B61519D25B337E5008EE885 /* PopularPhotosViewModel.swift in Sources */,
 				7B61517925B336E3008EE885 /* ContentView.swift in Sources */,
 				7B61517725B336E3008EE885 /* FlickrApplicationApp.swift in Sources */,
+				7B6151A625B33830008EE885 /* WebImageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7B6151B725B339C1008EE885 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B6151B625B339C1008EE885 /* en */,
+				7B6151C025B339EF008EE885 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7B61518025B336E6008EE885 /* Debug */ = {
