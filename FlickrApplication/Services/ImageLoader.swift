@@ -11,7 +11,7 @@ import Combine
 typealias ImageResponse = AnyPublisher<UIImage?, Never>
 
 protocol ImageLoaderProtocol {
-    func loadImage(_ photo: PhotoDiscription) -> ImageResponse
+    func loadImage(_ photo: PhotoDiscription?) -> ImageResponse
 }
 
 final class ImageLoader: ImageLoaderProtocol {
@@ -26,28 +26,24 @@ final class ImageLoader: ImageLoaderProtocol {
     
     // MARK: - Functions
     
-    func loadImage(_ photo: PhotoDiscription) -> ImageResponse {
+    func loadImage(_ photo: PhotoDiscription?) -> ImageResponse {
         
-        let path = "https://farm\(photo.farm).staticflickr.com/\(photo.server)/\(photo.id)_\(photo.secret).jpg"
-        
-        guard let url = URL(string: path) else {
-            return
-                Just(nil).eraseToAnyPublisher()
+        guard let url = createURL(for: photo) else {
+            return Just(nil).eraseToAnyPublisher()
         }
         
         guard
-            cache.object(forKey: path as NSString) != nil else {
+            cache.object(forKey: url.path as NSString) != nil else {
             
             return
                 URLSession
                 .shared
                 .dataTaskPublisher(for: url)
-                .subscribe(on: DispatchQueue.global(qos: .utility))
                 .receive(on: DispatchQueue.main)
                 .map(\.data)
                 .compactMap { [ self ] in
                     if let image = UIImage(data: $0) {
-                        cache.setObject(image, forKey: path as NSString)
+                        cache.setObject(image, forKey: url.path as NSString)
                     }
                     return UIImage(data: $0)
                 }
@@ -55,15 +51,29 @@ final class ImageLoader: ImageLoaderProtocol {
                 .eraseToAnyPublisher()
         }
         
-        if let image = cache.object(forKey: path as NSString) {
+        if let image = cache.object(forKey: url.path as NSString) {
             return
                 Just (image)
-                .subscribe(on: DispatchQueue.global())
+                .subscribe(on: DispatchQueue.global(qos: .userInteractive))
                 .receive(on: DispatchQueue.main)
                 .eraseToAnyPublisher()
         }
         
         return
             Just(nil).eraseToAnyPublisher()
+    }
+}
+
+extension ImageLoader {
+    
+    private func createURL(for photoDiscription: PhotoDiscription?) -> URL? {
+        
+        guard let photoDiscription = photoDiscription else { return nil }
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "farm\(photoDiscription.farm).staticflickr.com"
+        components.path = "/\(photoDiscription.server)/\(photoDiscription.id)_\(photoDiscription.secret).jpg"
+        return components.url
     }
 }

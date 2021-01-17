@@ -13,6 +13,7 @@ struct DetailPhotoView: View {
     private let screen = UIScreen.main.bounds
     
     var body: some View {
+        
         VStack(alignment: .center, spacing: 10) {
             WebImageView(photoDescription: photoDescription)
                 .frame(width: screen.width, height: screen.height / 3)

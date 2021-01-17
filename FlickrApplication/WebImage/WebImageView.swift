@@ -11,6 +11,7 @@ struct WebImageView: View {
    
     @StateObject
     private var viewModel = WebImageViewModel()
+    
     let photoDescription: PhotoDiscription
     
     var body: some View {

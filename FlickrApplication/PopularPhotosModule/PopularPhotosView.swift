@@ -9,26 +9,25 @@ import SwiftUI
 
 struct PopularPhotosView: View {
     
-    @StateObject
-    private var viewModel = PopularPhotosViewModel()
+    @ObservedObject var viewModel: PopularPhotosViewModel
     
     var body: some View {
         
-        NavigationView {
-            ScrollView(.vertical) {
-                ForEach(viewModel.popular) { description in
-                    NavigationLink(destination:
-                                    DetailPhotoView(photoDescription: description)) {
-                        WebImageView(photoDescription: description)
-                            .frame(width: UIScreen.main.bounds.width * 0.8, height: 200)
-                            .cornerRadius(30)
-                    }
+        List {
+            ForEach(viewModel.popular) { description in
+                NavigationLink(destination:
+                                DetailPhotoView(photoDescription: description)) {
+                    WebImageView(photoDescription: description)
+                        .frame(width: UIScreen.main.bounds.width * 0.8,
+                               height: UIScreen.main.bounds.height * 0.2)
+                        .cornerRadius(30)
                 }
             }
-            .onAppear { viewModel.getPhotos() }
-            .navigationBarTitle("Popular photos")
+            .modifier(ErrorPresenter(presenter: $viewModel.presenter))
         }
-        .environment(\.locale, .init(identifier: viewModel.currentLanguage))
+        .onAppear {
+            viewModel.getPhotos()
+        }
     }
 }
 

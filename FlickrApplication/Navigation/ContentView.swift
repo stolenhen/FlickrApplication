@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject
+    private var viewModel = PopularPhotosViewModel()
+    
     var body: some View {
-        PopularPhotosView()
+        NavigationView {
+            PopularPhotosView(viewModel: viewModel)
+                .navigationBarTitle("Popular photos")
+        }
+        .environment(\.locale, .init(identifier: viewModel.currentLanguage))
     }
 }
 

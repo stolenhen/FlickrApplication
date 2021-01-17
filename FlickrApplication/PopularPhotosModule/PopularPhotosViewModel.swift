@@ -12,6 +12,9 @@ final class PopularPhotosViewModel: ObservableObject {
     
     @Published
     private(set) var popular: [PhotoDiscription] = []
+    
+    @Published var presenter: Presenter?
+    
     private var anyCancellable = Set<AnyCancellable>()
     private let networkService: NetworkServiceProtocol
     
@@ -26,11 +29,11 @@ final class PopularPhotosViewModel: ObservableObject {
             .getPhotos(endpoint: .getInfo())
             .map (\.photo)
             .sink(
-                receiveCompletion: {
+                receiveCompletion: { [ self ] in
                     switch $0 {
                     case .finished: break
                     case let .failure(error):
-                        print(error.localizedDescription)
+                         presenter = .errorAlert(error: error)
                     }
                 },
                 receiveValue: { [ self ] in

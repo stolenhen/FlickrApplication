@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-typealias FlickrResponse = AnyPublisher<PhotoResponse, Error>
+typealias FlickrResponse = AnyPublisher<PhotoResponse, FlickrError>
 
 protocol NetworkServiceProtocol {
     func getPhotos(endpoint: Endpoint) -> FlickrResponse
@@ -23,16 +23,31 @@ final class NetworkService: NetworkServiceProtocol {
     
     func getPhotos(endpoint: Endpoint) -> FlickrResponse {
         
-        guard let url = endpoint.url else { fatalError("Unknown URL") }
-        print(url)
+        guard
+            let url = endpoint.url else {
+            return
+                Fail(error: .badURL).eraseToAnyPublisher()
+        }
+        
         return
             URLSession
             .shared
             .dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .utility))
             .receive(on: DispatchQueue.main)
             .map(\.data)
             .decode(type: PhotoResponse.self, decoder: JSONDecoder())
+            .mapError { error -> FlickrError in
+                switch error {
+                case URLError.notConnectedToInternet:
+                    return .noInternetConnection(error.localizedDescription)
+                case URLError.badURL:
+                    return .badURL
+                case URLError.badServerResponse:
+                    return .serverError(error.localizedDescription)
+                default:
+                    return .unknownError(error.localizedDescription)
+                }
+            }
             .eraseToAnyPublisher()
     }
 }
@@ -41,7 +56,7 @@ extension Endpoint {
     
     static func getInfo() -> Endpoint {
         
-        return Endpoint(path: "/services/rest/",
+        return Endpoint(path: "/services/rest",
                         queryItems: [ URLQueryItem(name: "method", value: "flickr.photos.getPopular"),
                                       URLQueryItem(name: "api_key", value: Constants.apiKey),
                                       URLQueryItem(name: "user_id", value: Constants.userID),
