@@ -13,22 +13,40 @@ struct PopularPhotosView: View {
     
     var body: some View {
         
-        List {
-            ForEach(viewModel.popular) { description in
-                NavigationLink(destination:
-                                DetailPhotoView(photoDescription: description)) {
-                    WebImageView(photoDescription: description)
-                        .frame(width: UIScreen.main.bounds.width * 0.8,
-                               height: UIScreen.main.bounds.height * 0.2)
-                        .cornerRadius(30)
+        ScrollView(showsIndicators: false) {
+            LazyVGrid(columns: GridMode.async(spacing: 2, columnsCount: 2).columns, spacing: 2) {
+                ForEach(viewModel.popular) { description in
+                    NavigationLink(destination:
+                                    DetailPhotoView(photoDescription: description)) {
+                        WebImageView(photoDescription: description)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 50, maxWidth: .infinity)
+                            .frame(height: 250)
+                            .clipped()
+                    }
                 }
             }
             .modifier(ErrorPresenter(presenter: $viewModel.presenter))
         }
+        .overlay(
+            Group {
+                if viewModel.popular.isEmpty {
+                    VStack(alignment: .center, spacing: 5) {
+                        Text("LOADING...")
+                            .font(.system(size: 14))
+                            .foregroundColor(.secondary)
+                        ProgressView()
+                    }
+                }
+            }
+        )
         .onAppear {
             viewModel.getPhotos()
         }
+        
+        
     }
+    
 }
 
 struct PopularPhotosView_Previews: PreviewProvider {
@@ -36,5 +54,3 @@ struct PopularPhotosView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-

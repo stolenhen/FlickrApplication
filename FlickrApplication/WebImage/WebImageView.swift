@@ -20,7 +20,6 @@ struct WebImageView: View {
             if let image = viewModel.image {
                 Image(uiImage: image)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
             }
             else {
                 Color(.lightGray)

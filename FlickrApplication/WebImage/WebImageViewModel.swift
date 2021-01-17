@@ -14,10 +14,15 @@ final class WebImageViewModel: ObservableObject {
     var image: UIImage?
     
     private var anyCancellable = Set<AnyCancellable>()
+    
+    private let imageLoader: ImageLoaderProtocol
+    
+    init(imageLoader: ImageLoaderProtocol = ImageLoader()) {
+        self.imageLoader = imageLoader
+    }
 
-    func fetchImage(for photoDescription: PhotoDiscription,
-                    loader: ImageLoaderProtocol = ImageLoader.shared) {
-        loader
+    func fetchImage(for photoDescription: PhotoDiscription) {
+        imageLoader
             .loadImage(photoDescription)
             .assign(to: \.image, on: self)
             .store(in: &anyCancellable)

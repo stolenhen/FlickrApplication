@@ -18,11 +18,7 @@ final class ImageLoader: ImageLoaderProtocol {
     
     // MARK: - Properties
     
-    private let cache = NSCache <NSString, UIImage>()
-    
-    static let shared = ImageLoader()
-    
-    private init() {}
+    private static let cache = NSCache <NSString, UIImage>()
     
     // MARK: - Functions
     
@@ -32,35 +28,26 @@ final class ImageLoader: ImageLoaderProtocol {
             return Just(nil).eraseToAnyPublisher()
         }
         
-        guard
-            cache.object(forKey: url.path as NSString) != nil else {
-            
+        if let image = ImageLoader.cache.object(forKey: url.path as NSString) {
+            return Just(image)
+                .subscribe(on: DispatchQueue.global())
+                .receive(on: DispatchQueue.main)
+                .eraseToAnyPublisher()
+        }
+        
             return
                 URLSession
                 .shared
                 .dataTaskPublisher(for: url)
                 .receive(on: DispatchQueue.main)
                 .map(\.data)
-                .compactMap { [ self ] in
-                    if let image = UIImage(data: $0) {
-                        cache.setObject(image, forKey: url.path as NSString)
-                    }
-                    return UIImage(data: $0)
-                }
+                .map(UIImage.init)
+                .handleEvents(receiveOutput: {
+                    guard let image = $0 else  { return }
+                    ImageLoader.cache.setObject(image, forKey: url.path as NSString)
+                    })
                 .catch {_ in Just(nil) }
                 .eraseToAnyPublisher()
-        }
-        
-        if let image = cache.object(forKey: url.path as NSString) {
-            return
-                Just (image)
-                .subscribe(on: DispatchQueue.global(qos: .userInteractive))
-                .receive(on: DispatchQueue.main)
-                .eraseToAnyPublisher()
-        }
-        
-        return
-            Just(nil).eraseToAnyPublisher()
     }
 }
 

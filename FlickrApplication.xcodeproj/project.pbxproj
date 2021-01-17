@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B1E7CB225B4A38600136AE9 /* GridMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E7CB125B4A38600136AE9 /* GridMode.swift */; };
 		7B61517725B336E3008EE885 /* FlickrApplicationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61517625B336E3008EE885 /* FlickrApplicationApp.swift */; };
 		7B61517925B336E3008EE885 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61517825B336E3008EE885 /* ContentView.swift */; };
 		7B61517B25B336E6008EE885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B61517A25B336E6008EE885 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B1E7CB125B4A38600136AE9 /* GridMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridMode.swift; sourceTree = "<group>"; };
 		7B61517325B336E3008EE885 /* FlickrApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B61517625B336E3008EE885 /* FlickrApplicationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrApplicationApp.swift; sourceTree = "<group>"; };
 		7B61517825B336E3008EE885 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				7B61519525B33786008EE885 /* PhotoResponse.swift */,
+				7B1E7CB125B4A38600136AE9 /* GridMode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B1E7CB225B4A38600136AE9 /* GridMode.swift in Sources */,
 				7B61519625B33786008EE885 /* PhotoResponse.swift in Sources */,
 				7B6151AF25B3389D008EE885 /* Constants.swift in Sources */,
 				7B6985A825B43CF70089AFD6 /* ErrorPresenter.swift in Sources */,
